@@ -3,6 +3,76 @@
   "version": "2.2.0",
   "name": "Mapping Mediator",
   "description": "Generic OpenHIM Mapping Mediator",
+  "defaultChannelConfig": [
+    {
+      "name": "Add Patient Encounter Channel",
+      "urlPattern": "^/fhir/encounter$",
+      "routes": [
+        {
+          "name": "HAPI FHIR Mediator Route",
+          "host": "hapi.fhir.org",
+          "path": "/baseR4/Encounter",
+          "port": "80",
+          "primary": true,
+          "type": "http"
+        }
+      ],
+      "allow": ["fhir"],
+      "methods": ["POST"],
+      "type": "http"
+    },
+    {
+      "name": "Add Encounter Observation Channel",
+      "urlPattern": "^/fhir/observation$",
+      "routes": [
+        {
+          "name": "HAPI FHIR Mediator Route",
+          "host": "hapi.fhir.org",
+          "path": "/baseR4/Observation",
+          "port": "80",
+          "primary": true,
+          "type": "http"
+        }
+      ],
+      "allow": ["fhir"],
+      "methods": ["POST"],
+      "type": "http"
+    },
+    {
+      "name": "Add Patient Channel",
+      "urlPattern": "^/fhir/patient$",
+      "routes": [
+        {
+          "name": "HAPI FHIR Mediator Route",
+          "host": "hapi.fhir.org",
+          "path": "/baseR4/Patient",
+          "port": "80",
+          "primary": true,
+          "type": "http"
+        }
+      ],
+      "allow": ["fhir"],
+      "methods": ["POST"],
+      "type": "http"
+    },
+    {
+      "name": "FHIR Passthrough channel",
+      "urlPattern": "^/fhir$",
+      "routes": [
+        {
+          "name": "HAPI FHIR Mediator Route",
+          "host": "hapi.fhir.org",
+          "path": "/baseR4",
+          "port": "80",
+          "primary": true,
+          "type": "http"
+        }
+      ],
+      "allow": ["fhir"],
+      "methods": ["POST"],
+      "type": "http"
+    }
+  ],
   "endpoints": [
     {
       "name": "Generic Mapping Mediator",
